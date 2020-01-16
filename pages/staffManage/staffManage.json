@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "员工管理",
-  "usingComponents": {
-    "mp-icon": "../../component/icon/icon",
-    "mp-dialog": "../../component/dialog/dialog"
-  }
-}
