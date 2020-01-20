@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "我的订单",
-  "usingComponents": {
-    "mp-icon": "../../component/icon/icon"
-  }
+  "navigationBarTitleText": "预约订单",
+  "usingComponents": {}
 }

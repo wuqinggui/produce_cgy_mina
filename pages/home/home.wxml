@@ -1,0 +1,18 @@
+<!--pages/home.wxml-->
+<view class="home">
+  <view class="head-wrap verticle-center row pt10 pb10">
+    <view class="flex-1 pt5 pb5 pl10 pr10 shop-search">
+      <view class='search-wrap'>
+        <image src="../../images/search_icon.jpg"></image>
+      </view>
+      <input class="flex-1 weui-input gray3" placeholder-class="f14" bindinput="bindKeyInput" placeholder="搜索"/>
+    </view>
+    <view class="add pl10"><mp-icon icon="add2" color="black" size="{{24}}"></mp-icon></view>
+  </view>
+  <view class="content-list column">
+    <view class="content-item mb5 mt5 row verticle-center" bindtap="goPage" data-url="{{item.url}}" wx:for="{{list}}" wx:key="index">
+      <view class="item-img"><image src="{{item.url}}"></image></view>
+      <view class="name pl10">{{item.name}}</view>
+    </view>
+  </view>
+</view>

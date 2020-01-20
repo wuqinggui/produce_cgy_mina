@@ -1,0 +1,40 @@
+<!--pages/customerOrder.wxml-->
+<view class="customerOrder pr15 pl15">
+  <view class="order-detail mt15 bg-white">
+    <view class="order-name pb10 pt10 text-center">玉米</view>
+    <view class="tables pb20 mb20">
+      <view class="half-px-border half-px-border-bottom"></view>
+      <view class="thead pb10 pt10 flex">
+        <view class="flex-1 text-center">品质</view>
+        <view class="flex-1 text-center">库存量</view>
+        <view class="flex-1 text-center">实际数量</view>
+      </view>
+      <view class="tbody flex">
+        <view class="flex-1 text-center f14">
+          <text class="type">上品</text>
+        </view>
+        <view class="flex-1 text-center f14">50斤</view>
+        <view class="flex-1 text-center f14 actual">90斤</view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="toal flex mb10">
+        <text class="pr10 txt">总金额</text>
+        <input class="weui-input" />
+      </view>
+      <view class="check flex mt10">
+        <text class="txt">选择供应商</text>
+        <view class="modelIpt">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker"><input class="weui-input" disabled="true" /></view>
+        </picker>
+          <!-- <view class="val">123</view> -->
+          <view class="common-arrow right arrow"></view>
+        </view>
+      </view>
+    </view>
+    <view class="foot-btn flex row-verser mt20 mb10">
+      <view class="save-btn">保存</view>
+    </view>
+  </view>
+</view>

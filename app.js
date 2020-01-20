@@ -71,6 +71,12 @@ App({
         }
       })
     }
+    wx.showTabBarRedDot({
+      index: 1,
+      // complete: function (res) {
+      //   console.log(res);
+      // }
+    })
   },
   onHide: function () {
     showNetworkTips = false;

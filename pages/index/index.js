@@ -7,16 +7,16 @@ Page({
    */
   data: {
     // 当前城市
-    curCity: {
-      cityId: 111,
-      cityName: '广州',
-      latitude: 23.18139,
-      longitude: 113.48067
-    },
+    // curCity: {
+    //   cityId: 111,
+    //   cityName: '广州',
+    //   latitude: 23.18139,
+    //   longitude: 113.48067
+    // },
     // 当前店铺
     curShop: {
       shopId: 222,
-      shopName: '广州店铺2'
+      shopName: '搜索'
     },
     shopPopData: {}, // 店铺弹框选择前的店铺数据
     // 店铺列表
@@ -414,30 +414,30 @@ Page({
     this.getData();
   },
   // 获取当前定位的城市
-  getCurCity: function () {
-    console.log('获取当前定位')
-      getApp().setLocation(1)
-        .then((res) => {
-          console.log('res', res)
-          wx.showToast({
-            title: '获取经纬度成功',
-            icon: 'none',
-            duration: 2000
-          })
-        })
-        .catch((error) => {
-          console.log('error', error)
-        })
-  },
+  // getCurCity: function () {
+  //   console.log('获取当前定位')
+  //     getApp().setLocation(1)
+  //       .then((res) => {
+  //         console.log('res', res)
+  //         wx.showToast({
+  //           title: '获取经纬度成功',
+  //           icon: 'none',
+  //           duration: 2000
+  //         })
+  //       })
+  //       .catch((error) => {
+  //         console.log('error', error)
+  //       })
+  // },
   // 显示店铺弹框
-  showShopPop: function () {
-    console.log('显示店铺弹框', this.data.curShop)
-    this.setData({
-      shopPopData: this.data.curShop,
-      shopPop: true,
-      showShopList: false
-    })
-  },
+  // showShopPop: function () {
+  //   console.log('显示店铺弹框', this.data.curShop)
+  //   this.setData({
+  //     shopPopData: this.data.curShop,
+  //     shopPop: true,
+  //     showShopList: false
+  //   })
+  // },
   // 显示店铺下拉数据
   showShopSelect: function () {
     this.setData({

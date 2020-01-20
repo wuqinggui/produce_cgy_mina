@@ -8,20 +8,20 @@ Page({
   data: {
     isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
     list: [
-      {
-        text: '店铺管理',
-        url: '/pages/shopManage/shopManage',
-        num: 5
-      }, {
-        text: '员工管理',
-        url: '/pages/staffManage/staffManage',
-        num: 0
-      }, {
-        text: '商家入驻申请',
-        url: '/pages/applySettled/applySettled',
-        num: 0
-      }
-      , {
+      // {
+      //   text: '店铺管理',
+      //   url: '/pages/shopManage/shopManage',
+      //   num: 5
+      // }, {
+      //   text: '员工管理',
+      //   url: '/pages/staffManage/staffManage',
+      //   num: 0
+      // }, {
+      //   text: '商家入驻申请',
+      //   url: '/pages/applySettled/applySettled',
+      //   num: 0
+      // },
+       {
         text: '关于我们',
         url: '',
         // url: '/pages/aboutUS/aboutUS',

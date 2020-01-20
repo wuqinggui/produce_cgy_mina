@@ -83,9 +83,9 @@ Page({
   },
   // 跳转收货地址
   goAddress: function () {
-    wx.navigateTo({
-      url: '/pages/shippingAddress/shippingAddress',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/shippingAddress/shippingAddress',
+    // })
   },
   // 退出登陆
   logout: function () {

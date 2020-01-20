@@ -1,37 +1,17 @@
-// pages/order/order.js
+// pages/customerOrder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    diaLog: false,
-    list: [{}, {}]
+    array: ['美国', '中国', '巴西', '日本']
   },
-  // 点击其他地方隐藏弹框
-  hideLog: function() {
+
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      diaLog: false
-    });
-  },
-  // 添加订单
-  addOrder: function() {
-    this.setData({
-      diaLog: true
-    });
-  },
-  // 客户订单
-  customerOrder: function() {
-    console.log(111);
-    wx.navigateTo({
-      url: '../customerOrder/customerOrder',
-    })
-  },
-  // 自定义订单
-  customOrder: function () {
-    console.log(222);
-    wx.navigateTo({
-      url: '../customOrder/customOrder',
+      index: e.detail.value
     })
   },
   /**

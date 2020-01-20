@@ -1,0 +1,76 @@
+/* pages/customerOrder.wxss */
+page {
+  background: #F2F2F2;
+}
+.customerOrder .order-detail {
+  border-radius: 16rpx;
+  padding: 20rpx 18rpx;
+}
+.order-detail .order-name {
+  color: #FFA800;
+}
+.order-detail .tables {
+  position: relative;
+} 
+.tables .tbody view{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.tables .tbody view.actual {
+  background: #FFF4DE;
+}
+.tables .tbody .type {
+  padding: 4rpx 6rpx;
+  border: 1rpx solid #f3f3f3;
+  font-size: 24rpx;
+  color: #C5C5C5;
+  border-radius: 15rpx;
+}
+.info .toal {
+  height: 60rpx;
+}
+.info .toal .txt {
+  line-height: 60rpx;
+  width: 150rpx;
+}
+.info .toal .weui-input {
+  padding-left: 10rpx;
+  width: 100%;
+  height: 100%;
+  border: 1rpx solid #f3f3f3;
+  border-radius: 10rpx;
+}
+.info .check {
+  height: 60rpx;
+}
+.info .check .txt {
+  line-height: 60rpx;
+  width: 250rpx;
+}
+.info .check .modelIpt {
+  border-radius: 10rpx;
+  border: 1rpx solid #f3f3f3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+}
+.modelIpt .val {
+  line-height: 60rpx;
+  padding-right: 50rpx;
+}
+.modelIpt .arrow {
+  top: 12rpx;
+  right: 12rpx;
+  position: absolute;
+  transform: rotate(90deg);
+}
+.foot-btn {
+  flex-direction: row-reverse;
+}
+.save-btn {
+  border-radius: 30rpx;
+  padding: 8rpx 42rpx;
+  background-color: #FFA800;
+  color: #fff;
+}
