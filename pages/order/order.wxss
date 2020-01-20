@@ -4,14 +4,14 @@
   border-radius: 20rpx;
 }
 .order-date{
+  position: relative;
   height: 90rpx;
   line-height: 90rpx;
   padding: 0 30rpx;
-  border-bottom: 1rpx solid #f3f3f3;
 }
 .order-item {
+  position: relative;
   padding: 25rpx 30rpx;
-  border-bottom: 1rpx solid #f3f3f3;
 }
 .order-item .name {
   width: 180rpx;

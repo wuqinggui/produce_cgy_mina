@@ -17,7 +17,7 @@
         <view class="flex-1 text-center f14 actual">90斤</view>
       </view>
     </view>
-    <view class="info">
+    <view class="info pl10 pr10">
       <view class="toal flex mb10">
         <text class="pr10 txt">总金额</text>
         <input class="weui-input" />
@@ -33,7 +33,7 @@
         </view>
       </view>
     </view>
-    <view class="foot-btn flex row-verser mt20 mb10">
+    <view class="foot-btn flex row-verser mt20 mb10 pr10">
       <view class="save-btn">保存</view>
     </view>
   </view>
