@@ -1,0 +1,21 @@
+/* pages/historyOrder/historyOrder.wxss */
+page {
+  background: #F2F2F2;
+}
+.orderBlock {
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.order-date{
+  position: relative;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 30rpx;
+}
+.order-item {
+  position: relative;
+  padding: 25rpx 30rpx;
+}
+.order-item .name {
+  width: 180rpx;
+}

@@ -13,6 +13,7 @@ Page({
     //   latitude: 23.18139,
     //   longitude: 113.48067
     // },
+    isSupplier: false, //判断是否显示供应商
     // 当前店铺
     curShop: {
       shopId: 222,
@@ -342,7 +343,16 @@ Page({
     imgPlaceholder: '../../images/cai.jpg', // 默认图片
     isClickView: false,
   },
-
+  backProduct: function() {
+    this.setData({
+      isSupplier: false
+    });
+  },
+  transLeft: function() {
+    this.setData({
+      isSupplier: true
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -509,6 +519,7 @@ Page({
 
     // 列表点击时记录下来，否则滚动监听会触发多次
     this.setData({
+      isSupplier: false,
       isClickView: true,
       curCategoryId: categoryId
     });

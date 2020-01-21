@@ -6,28 +6,65 @@
       <view class="half-px-border half-px-border-bottom"></view>
       <view class="thead pb10 pt10 flex">
         <view class="flex-1 text-center">品质</view>
-        <view class="flex-1 text-center">库存量</view>
-        <view class="flex-1 text-center">实际数量</view>
+        <view class="flex-1 text-center">数量</view>
+        <view class="flex-1 text-center">下单数</view>
       </view>
       <view class="tbody flex">
         <view class="flex-1 text-center f14">
           <text class="type">上品</text>
         </view>
         <view class="flex-1 text-center f14">50斤</view>
-        <view class="flex-1 text-center f14 actual">90斤</view>
+        <view class="flex-1 text-center f14 actual">8</view>
+      </view>
+      <view class="tbody flex">
+        <view class="flex-1 text-center f14">
+          <text class="type">上品</text>
+        </view>
+        <view class="flex-1 text-center f14">50斤</view>
+        <view class="flex-1 text-center f14 actual">8</view>
+      </view>
+      <view class="tbody flex">
+        <view class="flex-1 text-center f14">
+          <text class="type">上品</text>
+        </view>
+        <view class="flex-1 text-center f14">50斤</view>
+        <view class="flex-1 text-center f14 actual">8</view>
       </view>
     </view>
+
     <view class="info pl10 pr10">
-      <view class="toal flex mb10">
-        <text class="pr10 txt">总金额</text>
-        <input class="weui-input" />
+      <view class="price-sum flex ju-b pb10">
+        <view class="sum flex-1">
+          <text class="pr10 ffa">库存量</text>
+          <text class="ffa">50斤</text>
+        </view>
+        <view class="price flex-1 text-center">
+          <text>单价</text>
+          <text class="pl10 ffa">￥4/斤</text>
+        </view>
+      </view>
+      <view class="num flex ju-b pb10">
+        <view class="num1 row flex-1 text-center">
+          <text class="pr10">实际数量</text>
+          <input class="weui-input ipt" />
+        </view>
+        <view class="num2 flex-1 text-center">
+          <text class="pr10">总数量</text>
+          <text class="pl10 grayc">154斤</text>
+        </view>
+      </view>
+      <view class="total row">
+        <text class="pr10">总金额</text>
+        <input class="weui-input ipt" />
       </view>
       <view class="check flex mt10">
         <text class="txt">选择供应商</text>
         <view class="modelIpt">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-          <view class="picker"><input class="weui-input" disabled="true" /></view>
-        </picker>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              <input class="weui-input" disabled="true" />
+            </view>
+          </picker>
           <!-- <view class="val">123</view> -->
           <view class="common-arrow right arrow"></view>
         </view>

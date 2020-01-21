@@ -12,12 +12,13 @@ page {
 .order-detail .tables {
   position: relative;
 } 
+.tables .tbody .ipt {
+  width: 90%;
+  border: 1rpx solid #F3F3F3;
+}
 .tables .tbody view{
   height: 60rpx;
   line-height: 60rpx;
-}
-.tables .tbody view.actual {
-  background: #FFF4DE;
 }
 .tables .tbody .type {
   padding: 4rpx 6rpx;

@@ -21,14 +21,14 @@
     </view>
   </view>
 </template>
-<view class="order pr20 pl20 pb50">
+<view class="order pr20 pl20">
   <block wx:for="{{list}}" wx:key="index">
     <template is="orderList" data="{{...item}}" />
   </block>
-  <view class="pl20 pr20 addBtn">
+  <!-- <view class="pl20 pr20 addBtn">
     <view class="addOrder" bindtap="addOrder">添加订单</view>
-  </view>
-  <view class="shopPop-bg" wx:if="{{diaLog}}"></view>
+  </view> -->
+  <!-- <view class="shopPop-bg" wx:if="{{diaLog}}"></view>
   <view class="shopPop direction-center" wx:if="{{diaLog}}" bindtap="hideLog">
     <view class="shopPop-wrap">
       <view class="shopPop-foot">
@@ -36,5 +36,5 @@
         <button class="btn sure-btn p15 f14" catchtap="customOrder">自定义订单</button>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

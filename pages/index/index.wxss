@@ -1,7 +1,7 @@
 /* pages/index/index.wxss */
 .menu-wrap {
   height: 100vh;
-  padding: 80rpx 0 0 0;
+  /* padding: 80rpx 0 0 0; */
   position: relative;
 }
 
@@ -80,7 +80,7 @@ image {
 
 .category-list {
   position: fixed;
-  top: 80rpx;
+  top: 0;
   left: 0;
   bottom: 80rpx;
   width: 180rpx;
@@ -111,7 +111,28 @@ image {
   background-color: #fff;
   font-weight: 600;
 }
-
+.supplier-list {
+  height: 100%;
+  padding-left: 180rpx;
+}
+.supplier-list .back {
+  position: relative;
+  padding: 27rpx;
+}
+.supplier-list .supplier-item {
+  padding: 18rpx 30rpx;
+  position: relative;
+  overflow: hidden;
+}
+.supplier-item .classify {
+  color: #B8B8B8;
+  width: 50%;
+  float: left;
+  text-align: right;
+}
+.supplier-item .classify .price {
+  color: #F89E28;
+}
 .product-list {
   height: 100%;
   padding-left: 180rpx;
@@ -138,7 +159,7 @@ image {
   height: 200rpx;
   padding: 20rpx;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   position: relative;
 }

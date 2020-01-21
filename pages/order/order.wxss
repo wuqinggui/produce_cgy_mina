@@ -23,7 +23,7 @@
 }
 .order-status .btn {
   border-radius: 20rpx;
-  padding: 10rpx 26rpx;
+  padding: 14rpx 30rpx;
   background-color: #FFA800;
   color: #fff;
 }

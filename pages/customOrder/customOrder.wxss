@@ -16,29 +16,12 @@ page {
   height: 60rpx;
   line-height: 60rpx;
 }
-.tables .tbody view.actual {
-  background: #FFF4DE;
-}
 .tables .tbody .type {
   padding: 4rpx 6rpx;
   border: 1rpx solid #f3f3f3;
   font-size: 24rpx;
   color: #C5C5C5;
   border-radius: 15rpx;
-}
-.info .toal {
-  height: 60rpx;
-}
-.info .toal .txt {
-  line-height: 60rpx;
-  width: 150rpx;
-}
-.info .toal .weui-input {
-  padding-left: 10rpx;
-  width: 100%;
-  height: 100%;
-  border: 1rpx solid #f3f3f3;
-  border-radius: 10rpx;
 }
 .info .check {
   height: 60rpx;
@@ -54,6 +37,10 @@ page {
   width: 100%;
   height: 100%;
   line-height: 100%;
+}
+.ipt {
+  width: 160rpx;
+  border: 1rpx solid #F3F3F3;
 }
 .modelIpt .val {
   line-height: 60rpx;
@@ -73,4 +60,7 @@ page {
   padding: 8rpx 42rpx;
   background-color: #FFA800;
   color: #fff;
+}
+.ffa {
+  color: #FFA800 !important;
 }

@@ -1,18 +1,17 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/index/index",
-    "pages/orderSubmit/orderSubmit",
+    "pages/historyOrder/historyOrder",
     "pages/paySuccess/paySuccess",
     "pages/my/my",
     "pages/aboutUS/aboutUS",
     "pages/service/service",
     "pages/set/set",
+    "pages/customOrder/customOrder",
     "pages/addAddress/addAddress",
     "pages/login/login",
     "pages/order/order",
-    "pages/customerOrder/customerOrder",
-    "pages/customOrder/customOrder"
+    "pages/customerOrder/customerOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,14 +25,20 @@
     "selectedColor": "#000000",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabBar_icon/icon_home_depressed_defult.png",
         "selectedIconPath": "images/tabBar_icon/icon_home_depressed.png"
       },
       {
         "pagePath": "pages/order/order",
-        "text": "订单",
+        "text": "自定义",
+        "iconPath": "images/tabBar_icon/icon_business_defult.png",
+        "selectedIconPath": "images/tabBar_icon/icon_business.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "客户订单",
         "iconPath": "images/tabBar_icon/icon_business_defult.png",
         "selectedIconPath": "images/tabBar_icon/icon_business.png"
       },

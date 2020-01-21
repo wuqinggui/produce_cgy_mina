@@ -1,0 +1,25 @@
+<!--pages/historyOrder/historyOrder.wxml-->
+<template name="orderList">
+  <view class="orderBlock mb10">
+    <view class="order-date">
+      <text>2020/01/17</text>
+      <view class="half-px-border half-px-border-bottom"></view>
+    </view>
+    <view class="order-item verticle-center row ju-b" wx:for="{{[11,2,3,4,5,6]}}" wx:key="index">
+      <view class="name">玉米</view>
+      <view class="content flex verticle-center">
+        <view class="content-detail mr10">
+          <text class="ml10 gray6">上100斤</text>
+          <text class="ml10 gray6">下100斤</text>
+        </view>
+        <view class="common-arrow right"></view>
+      </view>
+      <view class="half-px-border half-px-border-bottom"></view>
+    </view>
+  </view>
+</template>
+<view class="historyOrder pr20 pl20 mt10">
+  <block wx:for="{{list}}" wx:key="index">
+    <template is="orderList" data="{{...item}}" />
+  </block>
+</view>
