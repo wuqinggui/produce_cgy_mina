@@ -26,7 +26,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "供应商",
         "iconPath": "images/tabBar_icon/icon_home_depressed_defult.png",
         "selectedIconPath": "images/tabBar_icon/icon_home_depressed.png"
       },

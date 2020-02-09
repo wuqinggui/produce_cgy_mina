@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "供货商",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
     "mp-badge": "../../component/badge/badge",
     "mp-icon": "../../component/icon/icon"
