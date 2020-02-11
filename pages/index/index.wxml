@@ -16,7 +16,7 @@
   </view> -->
 
   <!-- 顶部导航菜品分类 -->
-  <view class="nar-wrap pl5 pr5 verticle-center" wx:if="{{classList.length > 0}}">
+  <!-- <view class="nar-wrap pl5 pr5 verticle-center" wx:if="{{classList.length > 0}}">
     <block wx:for="{{classList}}" wx:for-item="classItem" wx:for-index="classIndex" wx:key="classIndex">
       <view class="narItem col-xs-3">
         <view class="image-wrap">
@@ -25,7 +25,7 @@
         <view class="text-center f14 gray3 text-overflow">{{classItem.className}}</view>
       </view>
     </block>
-  </view>
+  </view> -->
 
   <!-- 中间菜品 -->
   <scroll-view scroll-y class="content-wrap">
@@ -33,27 +33,27 @@
     <scroll-view scroll-y class="smallClass-list {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
       <block wx:for="{{smallClassList}}" wx:for-item="smallClassItem" wx:for-index="smallClassIndex" wx:key="smallClassIndex">
         <view class="smallClassItem {{curSmallClass.id === smallClassItem.id ? 'cur' : ''}}" data-item="{{smallClassItem}}" bindtap="handleChangeSmallClass">
-          <view class="text-overflow text-center text-black">{{smallClassItem.smallClassName}}</view>
+          <view class="text-overflow text-center text-black">{{smallClassItem.name}}</view>
         </view>
       </block>
     </scroll-view>
     <!-- 右侧菜品 -->
     <view class="product-list" wx:if="{{!isSupplier}}">
-      <block wx:for="{{goodsList}}" wx:for-item="goodsItem" wx:for-index="goodsIndex" wx:key="goodsIndex">
-        <view class="goodsItem"  bindtap="transLeft" wx:for="{{goodsItem.specpricelst}}" wx:for-item="specItem" wx:for-index="specIndex" wx:key="specIndex">
+      <block>
+        <view class="goodsItem"  bindtap="transLeft" wx:for="{{goodsList}}" wx:for-item="specItem" wx:for-index="specIndex" wx:key="specIndex">
           <view class="image-wrap">
-            <image src="{{goodsItem.imagepath ? goodsItem.imagepath : imgPlaceholder}}" class="image"></image>
+            <image src="/images/cai.jpg" class="image"></image>
           </view>
-          <view class="product-detail-wrap column ju-b">
+          <view class="product-detail-wrap column ju-b ju-c">
             <view>
-              <view class="title gray3 text-overflow f16">{{goodsItem.name}}</view>
-              <text class="label f10 gray6 text-overflow" wx:if="{{specItem.spec.specName}}">{{specItem.spec.specName}}</text>
+              <view class="title gray3 text-overflow f16">哈哈</view>
+              <!-- <text class="label f10 gray6 text-overflow">嘻嘻</text> -->
             </view>
-            <view class="price-wrap">
+            <!-- <view class="price-wrap">
               <text class="price f12">¥</text>
-              <text class="price f16">{{specItem.price}}</text>
-              <text class="unit f12">{{goodsItem.measurement}}</text>
-            </view>
+              <text class="price f16">15</text>
+              <text class="unit f12">精品</text>
+            </view> -->
           </view>
           <view class="common-arrow small right mr10"></view>
           <view class="half-px-border half-px-border-bottom"></view>
@@ -103,7 +103,7 @@
   </view> -->
 
   <!-- 店铺弹框 -->
-  <view class="shopPop-bg" wx:if="{{shopPop}}"></view>
+  <!-- <view class="shopPop-bg" wx:if="{{shopPop}}"></view>
   <view class="shopPop direction-center" wx:if="{{shopPop}}">
     <view class="shopPop-wrap">
       <view class="shopPop-head gray3 f16 p15 ">请选择购买店铺</view>
@@ -125,5 +125,5 @@
         <button class="sure-btn col-xs-6 p15 f14 gray3" bindtap="sureChangeShop">确认</button>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

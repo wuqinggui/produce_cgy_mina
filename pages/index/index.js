@@ -51,6 +51,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let sj_userId = wx.getStorageSync('sj_userId')
+    if (sj_userId) {
+      this.setData({
+        isLoading: true
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
     this.pageInit();
   },
 
@@ -91,8 +101,7 @@ Page({
 
   // 页面初始化
   pageInit: function () {
-    console.log('首页')
-    this.getRegionList(); // 获取地区列表
+    // this.getRegionList(); // 获取地区列表
     this.getShopClass(); // 获取大分类
   },
   
@@ -131,29 +140,16 @@ Page({
       })
   },
 
-  // 获取大分类
+  // 获取市场管理列表
   getShopClass: function () {
-    purchaseApi.shopClass()
+    purchaseApi.marketList()
       .then((res) => {
+        this.setData({
+          smallClassList: res.data,
+          curSmallClass: res.data.length > 0 ? res.data[0] : {}
+        });
+        this.getCommodity();
         console.log('获取大分类数据成功', res);
-        // this.setData({
-        //   classList: res.data ? res.data : []
-        // })
-        var num = 0;
-        for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i].imagepath) {
-            num = num + 1
-          }
-        }
-        if (num > 0 && num === res.data.length) {
-          this.setData({
-            classList: res.data
-          })
-        } else {
-          this.setData({
-            classList: []
-          })
-        }
       })
       .catch((error) => {
         console.log('获取大分类数据失败', error);
@@ -172,7 +168,6 @@ Page({
         console.log('获取小分类数据成功', res);
         this.setData({
           smallClassList: res.data,
-          curSmallClass: res.data.length > 0 ? res.data[0] : {}
         })
         this.getCommodity();
       })
@@ -186,28 +181,20 @@ Page({
       })
   },
 
-  // 获取小分类对应的商品
+  // 获取市场小分类对应的商品
   getCommodity: function () {
     wx.showLoading({
       title: '加载中',
     })
     var params = {
-      regionID: this.data.curRegion.id,
-      shopsmallclassid: this.data.curSmallClass.id,
-      name: this.data.name
+      marketId: this.data.curSmallClass.id
     }
-    purchaseApi.commodityList(params)
+    purchaseApi.marketcommodity(params)
       .then((res) => {
         console.log('获取商品数据成功', res);
         wx.hideLoading();
-        var data = res.data ? res.data : [];
-        for (var i = 0; i < data.length; i++) {
-          for (var j = 0; j < data[i].specpricelst.length; j++) {
-            data[i].specpricelst[j].isSelect = false;
-          }
-        }
         this.setData({
-          goodsList: data
+          goodsList: res.data
         })
       })
       .catch((error) => {
