@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "预约订单",
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-dialog": "../../component/dialog/dialog"
+  }
 }

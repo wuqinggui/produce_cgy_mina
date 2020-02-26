@@ -16,16 +16,16 @@
   </view> -->
 
   <!-- 顶部导航菜品分类 -->
-  <!-- <view class="nar-wrap pl5 pr5 verticle-center" wx:if="{{classList.length > 0}}">
+  <view class="nar-wrap pl5 pr5 verticle-center" wx:if="{{classList.length > 0}}">
     <block wx:for="{{classList}}" wx:for-item="classItem" wx:for-index="classIndex" wx:key="classIndex">
-      <view class="narItem col-xs-3">
+      <view class="narItem col-xs-3" bindtap="handleChangeClass" data-item="{{classItem}}">
         <view class="image-wrap">
           <image src="{{classItem.imagepath ? classItem.imagepath : imgPlaceholder}}" class="image"></image>
         </view>
-        <view class="text-center f14 gray3 text-overflow">{{classItem.className}}</view>
+        <view class="text-center mt5 f14 text-overflow {{curBigClass.id && curBigClass.id == classItem.id ? 'gray3' : 'gray9'}}">{{classItem.className}}</view>
       </view>
     </block>
-  </view> -->
+  </view>
 
   <!-- 中间菜品 -->
   <scroll-view scroll-y class="content-wrap">
@@ -33,20 +33,27 @@
     <scroll-view scroll-y class="smallClass-list {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
       <block wx:for="{{smallClassList}}" wx:for-item="smallClassItem" wx:for-index="smallClassIndex" wx:key="smallClassIndex">
         <view class="smallClassItem {{curSmallClass.id === smallClassItem.id ? 'cur' : ''}}" data-item="{{smallClassItem}}" bindtap="handleChangeSmallClass">
-          <view class="text-overflow text-center text-black">{{smallClassItem.name}}</view>
+          <view class="text-overflow text-center text-black">{{smallClassItem.smallClassName}}</view>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y class="smallClass-list2 {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
+      <block wx:for="{{marketList}}" wx:for-item="marketItem" wx:for-index="marketIndex" wx:key="marketIndex">
+        <view class="smallClassItem {{curMarket.id === marketItem.id ? 'cur' : ''}}" data-item="{{marketItem}}" bindtap="handleChangeMarket">
+          <view class="text-overflow text-center text-black">{{marketItem.name}}</view>
         </view>
       </block>
     </scroll-view>
     <!-- 右侧菜品 -->
     <view class="product-list" wx:if="{{!isSupplier}}">
       <block>
-        <view class="goodsItem"  bindtap="transLeft" wx:for="{{goodsList}}" wx:for-item="specItem" wx:for-index="specIndex" wx:key="specIndex">
+        <view class="goodsItem" bindtap="transLeft" wx:for="{{goodsList}}" wx:key="index">
           <view class="image-wrap">
-            <image src="/images/cai.jpg" class="image"></image>
+            <image src="{{item.commodity.imagepath}}" class="image"></image>
           </view>
           <view class="product-detail-wrap column ju-b ju-c">
             <view>
-              <view class="title gray3 text-overflow f16">哈哈</view>
+              <view class="title gray3 text-overflow f16">{{item.commodity.name}}</view>
               <!-- <text class="label f10 gray6 text-overflow">嘻嘻</text> -->
             </view>
             <!-- <view class="price-wrap">
@@ -72,7 +79,7 @@
         <view class="half-px-border half-px-border-bottom"></view>
       </view>
       <view class="supplier-item verticle-center flex ju-b" wx:for="{{goodsList}}" wx:key="index">
-        <view class="supplier-name pr30 f16">供应商1</view>
+        <view class="supplier-name pr10 f16">供应商1</view>
         <view class="supplier-product flex-1">
           <view class="classify f14">精品
             <text class="price">￥4/斤</text> </view>

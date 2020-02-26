@@ -6,12 +6,22 @@ Page({
    */
   data: {
     diaLog: false,
+    showOneButtonDialog: false, //显示隐藏dialog
+    oneButton: [{
+      text: '确定'
+    }],
     list: [{}, {}]
   },
   // 点击其他地方隐藏弹框
   hideLog: function() {
     this.setData({
       diaLog: false
+    });
+  },
+  // 新增下单商品
+  addCommodity: function() {
+    this.setData({
+      showOneButtonDialog: true
     });
   },
   // 添加订单
