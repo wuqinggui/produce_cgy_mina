@@ -37,23 +37,23 @@
         </view>
       </block>
     </scroll-view>
-    <scroll-view scroll-y class="smallClass-list2 {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
+    <!-- <scroll-view scroll-y class="smallClass-list2 {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
       <block wx:for="{{marketList}}" wx:for-item="marketItem" wx:for-index="marketIndex" wx:key="marketIndex">
         <view class="smallClassItem {{curMarket.id === marketItem.id ? 'cur' : ''}}" data-item="{{marketItem}}" bindtap="handleChangeMarket">
           <view class="text-overflow text-center text-black">{{marketItem.name}}</view>
         </view>
       </block>
-    </scroll-view>
+    </scroll-view> -->
     <!-- 右侧菜品 -->
     <view class="product-list" wx:if="{{!isSupplier}}">
       <block>
-        <view class="goodsItem" bindtap="transLeft" wx:for="{{goodsList}}" wx:key="index">
+        <view class="goodsItem" bindtap="goDetail" wx:for="{{goodsList}}" wx:key="index">
           <view class="image-wrap">
-            <image src="{{item.commodity.imagepath}}" class="image"></image>
+            <image src="{{item.imagepath}}" class="image"></image>
           </view>
           <view class="product-detail-wrap column ju-b ju-c">
             <view>
-              <view class="title gray3 text-overflow f16">{{item.commodity.name}}</view>
+              <view class="title gray3 text-overflow f16">{{item.commodityName}}</view>
               <!-- <text class="label f10 gray6 text-overflow">嘻嘻</text> -->
             </view>
             <!-- <view class="price-wrap">
@@ -62,7 +62,7 @@
               <text class="unit f12">精品</text>
             </view> -->
           </view>
-          <view class="common-arrow small right mr10"></view>
+          <view class="common-arrow small right mr10 gray3"></view>
           <view class="half-px-border half-px-border-bottom"></view>
         </view>
       </block>
@@ -73,7 +73,7 @@
     </view>
 
     <!-- 菜品对应供应商 -->
-    <view class="supplier-list" wx:else>
+    <!-- <view class="supplier-list" wx:else>
       <view class="back" bindtap="backProduct">
         <view class="common-arrow left"></view>
         <view class="half-px-border half-px-border-bottom"></view>
@@ -92,7 +92,7 @@
         </view>
         <view class="half-px-border half-px-border-bottom"></view>
       </view>
-    </view>
+    </view> -->
   </scroll-view>
 
   <!-- 底部购物车 -->

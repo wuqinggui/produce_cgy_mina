@@ -1,4 +1,4 @@
-export const baseUrl = 'https://47.106.130.46:8016/trade/';
+export const baseUrl = 'https://www.yuannong.shop:8019/trade/';
 
 // 用户模块
 export const loginURL = baseUrl + 'nmUser/login'; // 登陆
@@ -9,4 +9,9 @@ export const shopClassUrl = baseUrl + 'shopclass/findAll'; // 查询大分类的
 export const shopSmallClassUrl = baseUrl + 'shopsmallclass/findList'; // 查询小分类的接口
 export const marketListUrl = baseUrl + 'market/findList'; // 市场管理列表
 export const marketcommodityUrl = baseUrl + 'marketcommodity/findList'; // 市场商品管理列表
+
+// 首页采购列表
+export const purchaseListUrl = baseUrl + 'orderCommdityController/findOrderCommdityCg';
+// 采购详情
+export const purchaseDetailUrl = baseUrl + 'orderCommdityController/findOrderCommdityCgxq';
 

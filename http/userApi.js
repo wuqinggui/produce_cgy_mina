@@ -1,8 +1,11 @@
 var wxRequest = require('./request.js').wxRequest;
-import { loginURL, tokenURL } from './url'
+import {
+  loginURL,
+  tokenURL
+} from './url'
 
 var userApi = {
-  login: function (params) {
+  login: function(params) {
     return new Promise((resolve, reject) => {
       wxRequest(loginURL, 'POST', params)
         .then((res) => {
@@ -12,7 +15,7 @@ var userApi = {
     });
   },
   // 根据token获取用户信息
-  token: function (params) {
+  token: function(params) {
     return new Promise((resolve, reject) => {
       wxRequest(tokenURL, 'POST', params)
         .then((res) => {

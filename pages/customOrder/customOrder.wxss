@@ -4,7 +4,7 @@ page {
 }
 .customOrder .order-detail {
   border-radius: 16rpx;
-  padding: 20rpx 18rpx;
+  padding: 20rpx 0;
 }
 .order-detail .order-name {
   color: #FFA800;
@@ -12,15 +12,23 @@ page {
 .order-detail .tables {
   position: relative;
 } 
+.tables .specifications {
+  flex: 0 0 140rpx;
+}
 .tables .tbody view{
   height: 60rpx;
   line-height: 60rpx;
+  justify-content: center;
+}
+.tables .tbody input {
+  width: 60%;
+  border: 1rpx solid #f0f0f0;
 }
 .tables .tbody .type {
-  padding: 4rpx 6rpx;
-  border: 1rpx solid #f3f3f3;
+  color: #C4C4C4;
+  padding: 4rpx 20rpx;
+  border: 1rpx solid rgb(196, 196, 196);
   font-size: 24rpx;
-  color: #C5C5C5;
   border-radius: 15rpx;
 }
 .info .check {

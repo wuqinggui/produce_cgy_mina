@@ -148,7 +148,7 @@ image {
 
 .product-list {
   height: 100%;
-  padding-left: 360rpx;
+  padding-left: 180rpx;
 }
 
 .product-list .goodsItem {

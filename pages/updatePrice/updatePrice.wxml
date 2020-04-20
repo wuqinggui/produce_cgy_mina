@@ -1,0 +1,73 @@
+<!--pages/updatePrice/updatePrice.wxml-->
+<view class="menu-wrap {{classList.length > 0 ? 'menu-wrap-have-nar' : ''}}">
+  <!-- 顶部导航菜品分类 -->
+  <!-- <view class="nar-wrap pl5 pr5 verticle-center" wx:if="{{classList.length > 0}}">
+    <block wx:for="{{classList}}" wx:for-item="classItem" wx:for-index="classIndex" wx:key="classIndex">
+      <view class="narItem col-xs-3" bindtap="handleChangeClass" data-item="{{classItem}}">
+        <view class="image-wrap">
+          <image src="{{classItem.imagepath ? classItem.imagepath : imgPlaceholder}}" class="image"></image>
+        </view>
+        <view class="text-center mt5 f14 text-overflow {{curBigClass.id && curBigClass.id == classItem.id ? 'gray3' : 'gray9'}}">{{classItem.className}}</view>
+      </view>
+    </block>
+  </view> -->
+  <view class="top-btn">
+    <text class="change">更新价格</text>
+  </view>
+  <!-- 中间菜品 -->
+  <scroll-view scroll-y class="content-wrap">
+    <!-- 左侧菜单栏 -->
+    <scroll-view scroll-y class="smallClass-list {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
+      <block wx:for="{{smallClassList}}" wx:for-item="smallClassItem" wx:for-index="smallClassIndex" wx:key="smallClassIndex">
+        <view class="smallClassItem {{curSmallClass.id === smallClassItem.id ? 'cur' : ''}}" data-item="{{smallClassItem}}" bindtap="handleChangeSmallClass">
+          <view class="text-overflow text-center text-black">{{smallClassItem.smallClassName}}</view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="product-list" wx:if="{{!isSupplier}}">
+      <block>
+        <view class="goodsItem" wx:for="{{goodsList}}" wx:key="index">
+          <view class="classType">
+            <view class="title flex ju-b mb5">
+              <view class="info">
+                <text class="fw f16">华天玉米</text>
+                <text class="f12 pl10 gray6">零</text>
+              </view>
+              <view class="status f14 grayb26">未更新</view>
+            </view>
+            <view class="type">
+              <view class="mb5">规格/价格</view>
+              <view class="info flex mb5">
+                <view class="type-class">通</view>
+                <view class="type-price">
+                  <input class="weui-input" bindinput="bindKeyInput" />
+                </view>
+                <view class="type-company">元/斤</view>
+              </view>
+              <view class="info flex mb5">
+                <view class="type-class">通</view>
+                <view class="type-price">
+                  <input class="weui-input" bindinput="bindKeyInput" />
+                </view>
+                <view class="type-company">元/斤</view>
+              </view>
+              <view class="info flex mb5">
+                <view class="type-class">通</view>
+                <view class="type-price">
+                  <input class="weui-input" bindinput="bindKeyInput" />
+                </view>
+                <view class="type-company">元/斤</view>
+              </view>
+            </view>
+          </view>
+          <view class="half-px-border half-px-border-bottom"></view>
+        </view>
+      </block>
+      <view wx:if="{{goodsList.length == 0}}" class="list-nodata-area">
+        <image src="../../images/list_nodata_icon.png" class="list-nodata-image"></image>
+        <view class="list-nodata-tip"> -- 没有商品数据 -- </view>
+      </view>
+    </view>
+  </scroll-view>
+
+</view>

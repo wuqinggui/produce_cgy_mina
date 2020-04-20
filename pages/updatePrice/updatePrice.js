@@ -1,7 +1,6 @@
-// pages/index/index.js
+// pages/updatePrice/updatePrice.js
 var purchaseApi = require('../../http/purchaseApi.js').default;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -42,21 +41,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     let sj_userId = wx.getStorageSync('sj_userId')
     if (sj_userId) {
       this.setData({
@@ -73,46 +72,46 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
   // 页面初始化
-  pageInit: function() {
+  pageInit: function () {
     // this.getRegionList(); // 获取地区列表
     this.getShopClass(); // 获取大分类
   },
 
   // 获取地区列表
-  getRegionList: function() {
+  getRegionList: function () {
     purchaseApi.region()
       .then((res) => {
         console.log('获取地区数据成功', res);
@@ -145,30 +144,9 @@ Page({
         })
       })
   },
-// 获取首页采购单列表
-  getPurchaseList: function (smallClassId = '') {
-    let params = {
-      shopsmallclassId: smallClassId
-    }
-    purchaseApi.getPurchaseList(params)
-      .then((res) => {
-        console.log('获取首页采购列表成功', res);
-        this.setData({
-          goodsList: res.data
-        });
-      })
-      .catch((error) => {
-        console.log('获取首页采购列表失败', error);
-        wx.showToast({
-          title: error.message ? error.message : '获取首页采购列表失败',
-          icon: 'none',
-          duration: 2000
-        })
-      })
-  },
 
   // 获取市场管理列表
-  getMarketList: function(smallClassId = '') {
+  getMarketList: function (smallClassId = '') {
     let params = {
       shopsmallclassId: smallClassId
     }
@@ -194,7 +172,7 @@ Page({
 
 
   // 获取大分类
-  getShopClass: function() {
+  getShopClass: function () {
     purchaseApi.getShopClass()
       .then((res) => {
         console.log('获取大分类数据成功', res);
@@ -215,7 +193,7 @@ Page({
   },
 
   // 查询小分类
-  getShopSmallClass: function() {
+  getShopSmallClass: function () {
     let params = {
       classId: this.data.curBigClass.id ? this.data.curBigClass.id : ''
     }
@@ -226,7 +204,7 @@ Page({
           smallClassList: res.data,
           curSmallClass: res.data.length > 0 ? res.data[0] : {}
         })
-        this.getPurchaseList(this.data.curSmallClass.id); // 获取市场列表
+        this.getMarketList(this.data.curSmallClass.id); // 获取市场列表
       })
       .catch((error) => {
         console.log('获取小分类数据失败', error);
@@ -239,7 +217,7 @@ Page({
   },
 
   // 获取市场小分类对应的商品
-  getCommodity: function() {
+  getCommodity: function () {
     wx.showLoading({
       title: '加载中',
     })
@@ -252,7 +230,7 @@ Page({
         console.log('获取商品数据成功', res);
         wx.hideLoading();
         this.setData({
-          goodsList: res.data.length ? res.data : []
+          goodsList: res.data.length ? res.data : [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
         })
       })
       .catch((error) => {
@@ -267,14 +245,14 @@ Page({
   },
 
   // 模糊查询输入商品名称
-  bingChangeName: function(e) {
+  bingChangeName: function (e) {
     this.setData({
       name: e.detail.value
     })
   },
 
   // 模糊查询
-  searchName: function() {
+  searchName: function () {
     console.log('模糊查询')
     if (this.data.curRegion.id && this.data.curSmallClass.id) {
       this.getCommodity();
@@ -282,18 +260,10 @@ Page({
   },
 
 
-  backProduct: function() {
+  backProduct: function () {
     this.setData({
       isSupplier: false
     });
-  },
-  goDetail: function(e) {
-    wx.navigateTo({
-      url: '/pages/customOrder/customOrder',
-    })
-    // this.setData({
-    //   isSupplier: true
-    // });
   },
 
   // 切换地区
@@ -314,7 +284,7 @@ Page({
 
 
   // 切换大分类
-  handleChangeClass: function(e) {
+  handleChangeClass: function (e) {
     console.log(e.currentTarget.dataset)
     let {
       item
@@ -328,7 +298,7 @@ Page({
     this.getShopSmallClass();
   },
   //点击左侧小类 
-  handleChangeSmallClass: function(e) {
+  handleChangeSmallClass: function (e) {
     console.log(e);
     let {
       item
@@ -339,12 +309,11 @@ Page({
     this.setData({
       curSmallClass: item
     });
-    this.getPurchaseList(item.id);
-    // this.getMarketList(item.id);
+    this.getMarketList(item.id);
   },
 
   // 点击左侧市场菜单
-  handleChangeMarket: function(e) {
+  handleChangeMarket: function (e) {
     console.log(e)
     let {
       item

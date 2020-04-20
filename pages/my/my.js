@@ -8,24 +8,27 @@ Page({
   data: {
     isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
     list: [{
-      text: '设置',
-      url: '/pages/set/set',
-      num: 0
-    }, {
-      text: '历史订单',
-      url: '/pages/historyOrder/historyOrder',
-      num: 0
-    }, {
-      text: '客服',
-      url: '',
-      // url: '/pages/service/service',
-      num: 0
-    }, {
-      text: '关于我们',
-      url: '',
-      // url: '/pages/aboutUS/aboutUS',
-      num: 0
-    }, ]
+        text: '设置',
+        url: '/pages/set/set',
+        num: 0
+      },
+      //  {
+      //   text: '历史订单',
+      //   url: '/pages/historyOrder/historyOrder',
+      //   num: 0
+      // }, 
+      {
+        text: '客服',
+        url: '',
+        // url: '/pages/service/service',
+        num: 0
+      }, {
+        text: '关于我们',
+        url: '',
+        // url: '/pages/aboutUS/aboutUS',
+        num: 0
+      },
+    ]
   },
 
   navigateTo: function(e) {

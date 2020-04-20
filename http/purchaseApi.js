@@ -4,7 +4,8 @@ import {
   marketListUrl,
   marketcommodityUrl,
   shopClassUrl,
-  shopSmallClassUrl
+  shopSmallClassUrl,
+  purchaseListUrl
 } from './url'
 
 var purchaseApi = {
@@ -48,6 +49,15 @@ var purchaseApi = {
         .catch((error) => reject(error))
     });
   },
+  getPurchaseList: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(purchaseListUrl, 'GET', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  }
 }
 
 export default purchaseApi;
