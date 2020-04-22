@@ -47,7 +47,7 @@
     <!-- 右侧菜品 -->
     <view class="product-list" wx:if="{{!isSupplier}}">
       <block>
-        <view class="goodsItem" bindtap="goDetail" wx:for="{{goodsList}}" wx:key="index">
+        <view class="goodsItem" bindtap="goDetail" data-id="{{item.commodityId}}" wx:for="{{goodsList}}" wx:key="index">
           <view class="image-wrap">
             <image src="{{item.imagepath}}" class="image"></image>
           </view>

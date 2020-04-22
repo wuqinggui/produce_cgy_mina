@@ -37,7 +37,7 @@
             </view>
             <view class="type">
               <view class="mb5">规格/价格</view>
-              <view class="info flex mb5">
+              <view class="info flex mb5 gray9">
                 <view class="type-class">通</view>
                 <view class="type-price">
                   <input class="weui-input" bindinput="bindKeyInput" />

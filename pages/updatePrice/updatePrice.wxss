@@ -95,10 +95,10 @@ image {
 }
 .goodsItem .type-price input {
   color: #333;
-  padding-left: 10rpx;
   margin: 0 10rpx;
   width: 140rpx;
   border: 1rpx solid #f0f0f0;
+  text-align: center;
 }
 .product-detail-wrap {
   height: 100%;

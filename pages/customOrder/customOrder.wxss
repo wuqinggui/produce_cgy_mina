@@ -22,10 +22,10 @@ page {
 }
 .tables .tbody input {
   width: 60%;
-  border: 1rpx solid #f0f0f0;
+  border: 1rpx solid #ccc;
 }
 .tables .tbody .type {
-  color: #C4C4C4;
+  color: #999;
   padding: 4rpx 20rpx;
   border: 1rpx solid rgb(196, 196, 196);
   font-size: 24rpx;

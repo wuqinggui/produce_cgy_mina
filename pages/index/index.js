@@ -288,12 +288,10 @@ Page({
     });
   },
   goDetail: function(e) {
+    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/customOrder/customOrder',
+      url: '/pages/customOrder/customOrder?id=' + id,
     })
-    // this.setData({
-    //   isSupplier: true
-    // });
   },
 
   // 切换地区

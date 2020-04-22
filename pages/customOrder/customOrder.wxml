@@ -1,7 +1,7 @@
 <!--pages/customOrder.wxml-->
 <view class="customOrder">
   <view class="order-detail mt15 bg-white">
-    <view class="order-name pb10 pt10 text-center">玉米</view>
+    <view class="order-name pb10 pt10 text-center f20">{{info.commodityName}}</view>
     <view class="tables pb20 mb20">
       <view class="half-px-border half-px-border-bottom"></view>
       <view class="thead pb10 pt10 flex">
@@ -17,11 +17,11 @@
         <view class="flex-1 text-center f14">5斤</view>
         <view class="flex-1 text-center f14 verticle-center">
           <input class="weui-input" bindinput="bindKeyInput"/>
-          <text class="">斤</text>
+          <text class="ml5">斤</text>
         </view>
         <view class="flex-1 text-center f14 actual verticle-center">
           <input class="weui-input" bindinput="bindKeyInput"/>
-          <text class="">元</text>
+          <text class="ml5">元</text>
           </view>
       </view>
     </view>
@@ -40,11 +40,11 @@
       <view class="num flex ju-b pb10">
         <view class="num1 row flex-1 text-center">
           <text class="pr10">总金额</text>
-          <text class="pl10 grayc">1315元</text>
+          <text class="pl10 gray9">1315元</text>
         </view>
         <view class="num2 flex-1 text-center">
           <text class="pr10">总数量</text>
-          <text class="pl10 grayc">154斤</text>
+          <text class="pl10 gray9">154斤</text>
         </view>
       </view>
       <!-- <view class="total row">
