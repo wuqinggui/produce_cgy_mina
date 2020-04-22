@@ -47,7 +47,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.getData();
+    let sj_userId = wx.getStorageSync('sj_userId')
+    if (sj_userId) {
+      this.getData();
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
 
   /**

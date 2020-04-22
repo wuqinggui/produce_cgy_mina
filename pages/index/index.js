@@ -57,16 +57,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let sj_userId = wx.getStorageSync('sj_userId')
-    if (sj_userId) {
-      this.setData({
-        isLoading: true
-      })
-    } else {
-      // wx.navigateTo({
-      //   url: '/pages/login/login'
-      // })
-    }
+    // let sj_userId = wx.getStorageSync('sj_userId')
+    // if (sj_userId) {
+    //   this.setData({
+    //     isLoading: true
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login'
+    //   })
+    // }
     this.pageInit();
   },
 

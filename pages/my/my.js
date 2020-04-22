@@ -66,17 +66,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let {
-      getOpenidEnd
-    } = getApp().globalData;
-    // 已微信登陆
-    if (getOpenidEnd) {
+    let sj_userId = wx.getStorageSync('sj_userId')
+    if (sj_userId) {
       this.pageInit();
     } else {
-      // 未微信登陆
-      getApp().globalData.getOpenidCb = () => {
-        this.pageInit();
-      }
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
     }
   },
 

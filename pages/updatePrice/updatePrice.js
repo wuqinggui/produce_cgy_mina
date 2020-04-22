@@ -58,15 +58,12 @@ Page({
   onShow: function() {
     let sj_userId = wx.getStorageSync('sj_userId')
     if (sj_userId) {
-      this.setData({
-        isLoading: true
-      })
+      this.pageInit();
     } else {
-      // wx.navigateTo({
-      //   url: '/pages/login/login'
-      // })
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
     }
-    this.pageInit();
   },
 
   /**
