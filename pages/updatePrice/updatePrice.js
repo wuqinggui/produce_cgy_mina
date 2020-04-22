@@ -41,21 +41,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     let sj_userId = wx.getStorageSync('sj_userId')
     if (sj_userId) {
       this.setData({
@@ -72,46 +72,91 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
   // 页面初始化
-  pageInit: function () {
+  pageInit: function() {
     // this.getRegionList(); // 获取地区列表
     this.getShopClass(); // 获取大分类
   },
-
+  // 更新价格
+  changePrice: function() {
+    let params = {
+      commodityDtos: []
+    };
+    let goodsList = this.data.goodsList;
+    if(goodsList.length > 0) {
+      goodsList.forEach((item) => {
+        let arr = [];
+        if (item.specPriceVos.length > 0) {
+          item.specPriceVos.forEach((item2) => {
+            arr.push({
+              id: item2.id,
+              price: item2.price
+            });
+          })
+        }
+        params.commodityDtos.push({
+          commdityBm: item.commdityBm,
+          regionId: item.regionId,
+          specList: arr
+        });
+      })
+      purchaseApi.updatePrice(params).then((res) => {
+        wx.showToast({
+          title: '修改成功',
+          icon: 'success'
+        })
+      }).catch((err) => {
+        console.log(error);
+        // wx.showToast({
+        //   title: error.message ? error.message : '更新失败',
+        //   icon: 'none',
+        //   duration: 2000
+        // })
+      })
+    }
+  },
+  bindKeyInput: function(e) {
+    let { index, priceindex } = e.currentTarget.dataset;
+    let goodsList = this.data.goodsList;
+    goodsList[index].specPriceVos[priceindex].price = e.detail.value;
+    this.setData({
+      goodsList: goodsList
+    })
+  },
   // 获取地区列表
-  getRegionList: function () {
+  getRegionList: function() {
     purchaseApi.region()
       .then((res) => {
         console.log('获取地区数据成功', res);
@@ -145,25 +190,22 @@ Page({
       })
   },
 
-  // 获取市场管理列表
-  getMarketList: function (smallClassId = '') {
+  // 获取更新价格表
+  getSearchPrice: function(smallClassId = '') {
     let params = {
       shopsmallclassId: smallClassId
     }
-    purchaseApi.marketList(params)
+    purchaseApi.searchPrice(params)
       .then((res) => {
-        console.log(res);
+        console.log('获取更新价格表成功', res);
         this.setData({
-          marketList: res.data,
-          curMarket: res.data.length > 0 ? res.data[0] : {}
+          goodsList: res.data.list.length ? res.data.list : []
         });
-        this.getCommodity();
-        console.log('获取市场管理列表成功', res);
       })
       .catch((error) => {
-        console.log('获取市场管理列表失败', error);
+        console.log('获取更新价格表失败', error);
         wx.showToast({
-          title: error.message ? error.message : '获取市场管理列表失败',
+          title: error.message ? error.message : '获取更新价格表失败',
           icon: 'none',
           duration: 2000
         })
@@ -172,7 +214,7 @@ Page({
 
 
   // 获取大分类
-  getShopClass: function () {
+  getShopClass: function() {
     purchaseApi.getShopClass()
       .then((res) => {
         console.log('获取大分类数据成功', res);
@@ -193,7 +235,7 @@ Page({
   },
 
   // 查询小分类
-  getShopSmallClass: function () {
+  getShopSmallClass: function() {
     let params = {
       classId: this.data.curBigClass.id ? this.data.curBigClass.id : ''
     }
@@ -204,7 +246,7 @@ Page({
           smallClassList: res.data,
           curSmallClass: res.data.length > 0 ? res.data[0] : {}
         })
-        this.getMarketList(this.data.curSmallClass.id); // 获取市场列表
+        this.getSearchPrice(this.data.curSmallClass.id); // 获取市场列表
       })
       .catch((error) => {
         console.log('获取小分类数据失败', error);
@@ -217,7 +259,7 @@ Page({
   },
 
   // 获取市场小分类对应的商品
-  getCommodity: function () {
+  getCommodity: function() {
     wx.showLoading({
       title: '加载中',
     })
@@ -245,14 +287,14 @@ Page({
   },
 
   // 模糊查询输入商品名称
-  bingChangeName: function (e) {
+  bingChangeName: function(e) {
     this.setData({
       name: e.detail.value
     })
   },
 
   // 模糊查询
-  searchName: function () {
+  searchName: function() {
     console.log('模糊查询')
     if (this.data.curRegion.id && this.data.curSmallClass.id) {
       this.getCommodity();
@@ -260,7 +302,7 @@ Page({
   },
 
 
-  backProduct: function () {
+  backProduct: function() {
     this.setData({
       isSupplier: false
     });
@@ -284,7 +326,7 @@ Page({
 
 
   // 切换大分类
-  handleChangeClass: function (e) {
+  handleChangeClass: function(e) {
     console.log(e.currentTarget.dataset)
     let {
       item
@@ -298,7 +340,7 @@ Page({
     this.getShopSmallClass();
   },
   //点击左侧小类 
-  handleChangeSmallClass: function (e) {
+  handleChangeSmallClass: function(e) {
     console.log(e);
     let {
       item
@@ -309,11 +351,11 @@ Page({
     this.setData({
       curSmallClass: item
     });
-    this.getMarketList(item.id);
+    this.getSearchPrice(item.id);
   },
 
   // 点击左侧市场菜单
-  handleChangeMarket: function (e) {
+  handleChangeMarket: function(e) {
     console.log(e)
     let {
       item

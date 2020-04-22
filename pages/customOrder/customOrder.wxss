@@ -64,11 +64,17 @@ page {
   flex-direction: row-reverse;
 }
 .save-btn {
+  text-align: center;
   border-radius: 30rpx;
-  padding: 8rpx 42rpx;
+  width: 60%;
+  height: 70rpx;
+  line-height: 70rpx;
   background-color: #FFA800;
   color: #fff;
 }
 .ffa {
   color: #FFA800 !important;
+}
+.remark {
+  color: #F35317;
 }

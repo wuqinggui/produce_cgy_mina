@@ -6,7 +6,9 @@ import {
   shopClassUrl,
   shopSmallClassUrl,
   purchaseListUrl,
-  purchaseDetailUrl
+  purchaseDetailUrl,
+  searchPriceUrl,
+  updatePriceUrl
 } from './url'
 
 var purchaseApi = {
@@ -50,6 +52,7 @@ var purchaseApi = {
         .catch((error) => reject(error))
     });
   },
+  // 获取采购列表
   getPurchaseList: function (params) {
     return new Promise((resolve, reject) => {
       wxRequest(purchaseListUrl, 'GET', params)
@@ -59,9 +62,30 @@ var purchaseApi = {
         .catch((error) => reject(error))
     });
   },
+  // 获取采购详情
   getPurchaseDetail: function (params) {
     return new Promise((resolve, reject) => {
       wxRequest(purchaseDetailUrl, 'GET', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  },
+  // 获取价格修改界面数据
+  searchPrice: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(searchPriceUrl, 'POST', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  },
+  // 修改价格
+  updatePrice: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(updatePriceUrl, 'POST', params)
         .then((res) => {
           resolve(res);
         })

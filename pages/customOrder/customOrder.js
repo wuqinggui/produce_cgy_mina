@@ -8,11 +8,10 @@ Page({
   data: {
     info: null,
     id: '',
-    array: ['美国', '中国', '巴西', '日本']
   },
   getData: function() {
     let params = {
-      commdityId: this.data.id
+      commdityId: this.data.id || '181142518'
     };
     purchaseApi.getPurchaseDetail(params).then((res) => {
       console.log(res);
@@ -26,12 +25,6 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    })
-  },
-  bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value
     })
   },
   /**

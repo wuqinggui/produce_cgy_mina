@@ -12,7 +12,7 @@
     </block>
   </view> -->
   <view class="top-btn">
-    <text class="change">更新价格</text>
+    <text class="change" bindtap="changePrice">更新价格</text>
   </view>
   <!-- 中间菜品 -->
   <scroll-view scroll-y class="content-wrap">
@@ -30,33 +30,22 @@
           <view class="classType">
             <view class="title flex ju-b mb5">
               <view class="info">
-                <text class="fw f16">华天玉米</text>
-                <text class="f12 pl10 gray6">零</text>
+                <text class="fw f16">{{item.name}}</text>
+                <text class="f12 pl10 gray6">{{item.zlbz}}</text>
               </view>
-              <view class="status f14 grayb26">未更新</view>
+              <view class="status f14 grayb26">{{item.status}}</view>
             </view>
             <view class="type">
               <view class="mb5">规格/价格</view>
-              <view class="info flex mb5 gray9">
-                <view class="type-class">通</view>
+              <view class="info flex mb5 gray9" wx:for="{{item.specPriceVos}}" wx:for-index="priceIndex" wx:for-item="priceItem">
+                <view class="type-class">{{priceItem.spec.specName}}</view>
                 <view class="type-price">
-                  <input class="weui-input" bindinput="bindKeyInput" />
+                  <input class="weui-input" bindinput="bindKeyInput"
+                  data-index="{{index}}"
+                  data-priceIndex="{{priceIndex}}"
+                   value="{{priceItem.price}}" />
                 </view>
-                <view class="type-company">元/斤</view>
-              </view>
-              <view class="info flex mb5">
-                <view class="type-class">通</view>
-                <view class="type-price">
-                  <input class="weui-input" bindinput="bindKeyInput" />
-                </view>
-                <view class="type-company">元/斤</view>
-              </view>
-              <view class="info flex mb5">
-                <view class="type-class">通</view>
-                <view class="type-price">
-                  <input class="weui-input" bindinput="bindKeyInput" />
-                </view>
-                <view class="type-company">元/斤</view>
+                <view class="type-company">元/{{item.quotation.name}}</view>
               </view>
             </view>
           </view>

@@ -20,6 +20,9 @@ App({
     latitude: 0,// 纬度
     getOpenidEnd: false,
     getOpenidCb: null,//openid到位回调方法, 页面需要待openid到位回调成功再执行其他请求
+    submitCarData: {}, // 立即下单的购物车数据
+    addresseeData: {}, // 提交订单页面的收件人信息
+    supplyOrderData: {}, // 补单的现订单信息
   },
   onLaunch: function (options) {
     console.log('------------onLaunch场景值---------', options.scene);
@@ -85,29 +88,18 @@ App({
     console.log('------------设备信息---------', systemInfo);
     let { model } = systemInfo;
     let ipxList = ['iPhone X', 'iPhone XR', 'iPhone XS', 'iPhone XS Max', 'iPhone11'];
-    if (ipxList.indexOf(model) !== -1) {
-      this.globalData.isIpx = true;
-    } else {
-      this.globalData.isIpx = false;
+    // if (ipxList.indexOf(model) !== -1) {
+    //   this.globalData.isIpx = true;
+    // } else {
+    //   this.globalData.isIpx = false;
+    // }
+    for (var i = 0; i < ipxList.length; i++) {
+      if (model.indexOf(ipxList[i]) !== -1) {
+        console.log('isIpx')
+        this.globalData.isIpx = true;
+        break;
+      }
     }
-  },
-
-  // 存储用户数据和设置缓存
-  saveUserInfo: function (userInfo) {
-    console.log('存储用户数据和设置缓存', userInfo)
-    this.globalData.userInfo = userInfo;
-    wx.setStorageSync("sj_userInfo", userInfo);
-    wx.setStorageSync("sj_userId", userInfo.id);
-    wx.setStorageSync("sj_token", userInfo.token);
-  },
-
-  // 清空用户信息和缓存
-  clearUserInfo: function () {
-    console.log('清空用户信息和缓存')
-    this.globalData.userInfo = {};
-    wx.removeStorageSync('sj_userInfo');
-    wx.removeStorageSync('sj_userid');
-    wx.removeStorageSync('sj_token');
   },
 
   // 用户进来的时候先用wx.login登录传code给服务端，服务端获取openid之后在数据库插一条粉丝数据。用户操作购物车的时候正常请求，当他授权手机号的时候补全他的用户信息就可以了
@@ -326,6 +318,7 @@ App({
         case 'getPhoneNumber:ok':
           wx.showLoading({
             title: '加载中...',
+            mask: true
           });
           if (!iv || !encryptedData) {
             wx.hideLoading();
