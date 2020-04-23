@@ -6,17 +6,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info: null,
+    commodityName: '',
+    orderCommoditEwVo: {
+      mainDesc: '',
+      shopdesc: '',
+      smdesc: '',
+    },
     id: '',
+    product: []
   },
+  // 获取详情数据
   getData: function() {
     let params = {
       commdityId: this.data.id || '181142518'
     };
     purchaseApi.getPurchaseDetail(params).then((res) => {
-      console.log(res);
+      if (res.data.length > 0) {
+        res.data.forEach((item) => {
+          item.count_price = 0;
+        })
+      }
       this.setData({
-        info: res.data.length ? res.data[0] : {}
+        product: res.data.length ? res.data : [],
+        commodityName: res.data.length ? res.data[0].commodityName : '',
+        orderCommoditEwVo: res.data.length ? res.data[0].orderCommoditEwVo : {}
       });
     }).catch((err) => {
       console.log('获取详情数据失败', error);
@@ -26,6 +39,23 @@ Page({
         duration: 2000
       })
     })
+  },
+  // 保存
+  saveData: function() {
+    let params = {};
+    purchaseApi.updatePurchase(params).then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log('保存详情数据失败', error);
+      wx.showToast({
+        title: error.message ? error.message : '保存详情数据失败',
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
+  bindKeyInput: function(e) {
+    console.log(e);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -47,14 +77,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let sj_userId = wx.getStorageSync('sj_userId')
-    if (sj_userId) {
-      this.getData();
-    } else {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-    }
+    // let sj_userId = wx.getStorageSync('sj_userId')
+    // if (sj_userId) {
+    this.getData();
+    // } else {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login'
+    //   })
+    // }
   },
 
   /**

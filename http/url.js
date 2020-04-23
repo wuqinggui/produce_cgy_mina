@@ -12,8 +12,10 @@ export const marketcommodityUrl = baseUrl + 'marketcommodity/findList'; // 市�
 
 // 首页采购列表
 export const purchaseListUrl = baseUrl + 'orderCommdityController/findOrderCommdityCg';
-// 采购详情
+// 获取采购详情
 export const purchaseDetailUrl = baseUrl + 'orderCommdityController/findOrderCommdityCgxq';
+// 修改采购详情
+export const updatePurchaseUrl = baseUrl + 'orderCommdityController/update';
 // 查询更改价格数据接口
 export const searchPriceUrl = baseUrl + 'commodity/searchByCommodity';
 // 更改价格接口

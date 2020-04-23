@@ -1,42 +1,42 @@
 <!--pages/customOrder.wxml-->
 <view class="customOrder">
-  <view class="order-detail mt15 bg-white">
-    <view class="order-name pb10 pt10 text-center f20">{{info.commodityName}}</view>
+  <view class="order-detail bg-white">
+    <view class="order-name pb10 pt10 text-center f18">{{commodityName}}</view>
     <view class="read-info tables pb20">
       <view class="half-px-border half-px-border-bottom"></view>
       <view class="thead pb10 pt10 flex">
-        <view class="flex-1 text-center">规格</view>
-        <view class="flex-1 text-center">库存</view>
-        <view class="flex-1 text-center">单价</view>
+        <view class="flex-1 text-center f15">规格</view>
+        <view class="flex-1 text-center f15">库存</view>
+        <view class="flex-1 text-center f15">单价</view>
       </view>
-      <view class="tbody flex" wx:for="{{[1,2,3,45]}}" wx:key="index">
+      <view class="tbody flex" wx:for="{{product}}" wx:key="index">
         <view class="flex-1 text-center f14">
-          <text class="type">通</text>
+          <text class="type">{{item.specs.specName}}</text>
         </view>
         <view class="flex-1 text-center f14">
-          <text>50斤</text>
+          <text>{{item.orderCommoditEwVo.kc}}斤</text>
         </view>
         <view class="flex-1 text-center f14 actual">
-          <text class="ml5">3.0元/斤</text>
+          <text class="ml5">{{item.count_price}}元/{{item.measurementQuotationUnit.name}}</text>
         </view>
       </view>
     </view>
     <view class="tables pb20 mb20 mt20">
       <view class="half-px-border half-px-border-bottom"></view>
       <view class="thead pb10 pt10 flex">
-        <view class="flex-1 text-center specifications">规格</view>
-        <view class="flex-1 text-center">预定量</view>
-        <view class="flex-1 text-center">实际量</view>
-        <view class="flex-1 text-center">总金额</view>
+        <view class="flex-1 text-center specifications f15">规格</view>
+        <view class="flex-1 text-center f15">预定量</view>
+        <view class="flex-1 text-center f15">实际量</view>
+        <view class="flex-1 text-center f15">总金额</view>
       </view>
-      <view class="tbody flex" wx:for="{{[1,2,3,45]}}" wx:key="index">
+      <view class="tbody flex" wx:for="{{product}}" wx:key="index">
         <view class="flex-1 text-center f14 specifications">
-          <text class="type">通</text>
+          <text class="type">{{item.specs.specName}}</text>
         </view>
-        <view class="flex-1 text-center f14">5斤</view>
+        <view class="flex-1 text-center f14">{{item.number}}{{item.measurementUnit.name}}</view>
         <view class="flex-1 text-center f14 verticle-center">
-          <input class="weui-input" bindinput="bindKeyInput" />
-          <text class="ml5">斤</text>
+          <input class="weui-input" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" />
+          <text class="ml5">{{item.measurementActualUnit.name}}</text>
         </view>
         <view class="flex-1 text-center f14 actual verticle-center">
           <input class="weui-input" bindinput="bindKeyInput" />
@@ -46,31 +46,31 @@
     </view>
 
     <view class="info pl30 pr30">
-      <view class="main-remarks remark f14">
+      <view class="main-remarks remark f14 mb5">
         主备注:
-        <text></text>
+        <text class="ml5 gray3 f14">{{orderCommoditEwVo.mainDesc}}</text>
       </view>
-      <view class="second-remarks remark f14">
+      <view class="second-remarks remark f14 mb5">
         次备注:
-        <text></text>
+        <text class="ml5 gray3 f14">{{orderCommoditEwVo.shopdesc}}</text>
       </view>
-      <view class="msg f14 remark">
+      <view class="msg f14 remark mb5">
         说明:
-        <text></text>
+        <text class="ml5 gray3 f14">{{orderCommoditEwVo.smdesc}}</text>
       </view>
       <view class="num flex ju-b pb10">
         <view class="num1 row flex-1 text-center f14">
           <text class="pr10">合计金额</text>
-          <text class="pl10"><text class="fw">1315</text> 元</text>
+          <text class="pl10"><text class="fw">0</text> 元</text>
         </view>
         <view class="num2 flex-1 text-center f14">
           <text class="pr10">汇总数量</text>
-          <text class="pl10"><text class="fw">154</text> 斤</text>
+          <text class="pl10"><text class="fw">0</text> 斤</text>
         </view>
       </view>
     </view>
     <view class="foot-btn flex row-verser mt20 mb10 pr10 ju-c">
-      <view class="save-btn">保存</view>
+      <view class="save-btn" bindtap="saveData">保存</view>
     </view>
   </view>
 </view>

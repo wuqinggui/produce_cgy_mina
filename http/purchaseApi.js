@@ -6,6 +6,7 @@ import {
   shopClassUrl,
   shopSmallClassUrl,
   purchaseListUrl,
+  updatePurchaseUrl,
   purchaseDetailUrl,
   searchPriceUrl,
   updatePriceUrl
@@ -66,6 +67,16 @@ var purchaseApi = {
   getPurchaseDetail: function (params) {
     return new Promise((resolve, reject) => {
       wxRequest(purchaseDetailUrl, 'GET', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  }, 
+  // 修改采购详情
+  updatePurchase: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(updatePurchaseUrl, 'POST', params)
         .then((res) => {
           resolve(res);
         })

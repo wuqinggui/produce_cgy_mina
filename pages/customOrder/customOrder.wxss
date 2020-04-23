@@ -1,10 +1,9 @@
 /* pages/customOrder.wxss */
 page {
-  background: #F2F2F2;
+  background: #fff;
 }
 .customOrder .order-detail {
   border-radius: 16rpx;
-  padding: 20rpx 0;
 }
 .order-detail .order-name {
   color: #FFA800;
