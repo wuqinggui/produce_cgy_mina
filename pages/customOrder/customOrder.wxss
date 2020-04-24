@@ -1,28 +1,40 @@
 /* pages/customOrder.wxss */
+
 page {
   background: #fff;
 }
+
+.customOrder {
+  padding-bottom: 120rpx;
+}
+
 .customOrder .order-detail {
   border-radius: 16rpx;
 }
+
 .order-detail .order-name {
-  color: #FFA800;
+  color: #ffa800;
 }
+
 .order-detail .tables {
   position: relative;
-} 
+}
+
 .tables .specifications {
   flex: 0 0 140rpx;
 }
-.tables .tbody view{
+
+.tables .tbody view {
   height: 60rpx;
   line-height: 60rpx;
   justify-content: center;
 }
+
 .tables .tbody input {
   width: 60%;
   border: 1rpx solid #ccc;
 }
+
 .tables .tbody .type {
   color: #999;
   padding: 4rpx 20rpx;
@@ -30,13 +42,16 @@ page {
   font-size: 24rpx;
   border-radius: 15rpx;
 }
+
 .info .check {
   height: 60rpx;
 }
+
 .info .check .txt {
   line-height: 60rpx;
   width: 250rpx;
 }
+
 .info .check .modelIpt {
   border-radius: 10rpx;
   border: 1rpx solid #f3f3f3;
@@ -45,35 +60,49 @@ page {
   height: 100%;
   line-height: 100%;
 }
+
 .ipt {
   width: 160rpx;
-  border: 1rpx solid #F3F3F3;
+  border: 1rpx solid #f3f3f3;
 }
+
 .modelIpt .val {
   line-height: 60rpx;
   padding-right: 50rpx;
 }
+
 .modelIpt .arrow {
   top: 12rpx;
   right: 12rpx;
   position: absolute;
   transform: rotate(90deg);
 }
+
 .foot-btn {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  position: fixed;
+  align-items: center;
   flex-direction: row-reverse;
 }
+
 .save-btn {
+  font-size: 30rpx;
   text-align: center;
-  border-radius: 30rpx;
-  width: 60%;
-  height: 70rpx;
-  line-height: 70rpx;
-  background-color: #FFA800;
+  border-radius: 50rpx;
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #ffa800;
   color: #fff;
 }
+
 .ffa {
-  color: #FFA800 !important;
+  color: #ffa800 !important;
 }
+
 .remark {
-  color: #F35317;
+  color: #f35317;
 }

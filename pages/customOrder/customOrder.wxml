@@ -68,7 +68,7 @@
         </view>
       </view>
     </view>
-    <view class="foot-btn flex row-verser mt20 mb10 pr10 ju-c">
+    <view class="foot-btn flex row-verser pr10 ju-c">
       <view class="save-btn" bindtap="saveData">保存</view>
     </view>
   </view>
