@@ -15,8 +15,8 @@
         open-type="getUserInfo"
         bindgetuserinfo="getUserInfo"
         wx:if="{{!isAuthUserinfo}}">
-            <image src="/images/head_img.png" class="info-icon"></image>
-            <text class="gray3 f16 text-white text-overflow pt10">点击显示微信头像</text>
+            <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/images/head_img.png'}}" class="info-icon"></image>
+            <text class="gray3 f16 text-white text-overflow pt10">{{userInfo.nickname ? userInfo.nickname : '用户名'}}</text>
         </button>
         <button
             class="auth-btn"

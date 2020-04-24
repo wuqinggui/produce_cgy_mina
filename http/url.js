@@ -15,7 +15,7 @@ export const purchaseListUrl = baseUrl + 'orderCommdityController/findOrderCommd
 // 获取采购详情
 export const purchaseDetailUrl = baseUrl + 'orderCommdityController/findOrderCommdityCgxq';
 // 修改采购详情
-export const updatePurchaseUrl = baseUrl + 'orderCommdityController/update';
+export const updatePurchaseUrl = baseUrl + 'commodity/updateCk';
 // 查询更改价格数据接口
 export const searchPriceUrl = baseUrl + 'commodity/searchByCommodity';
 // 更改价格接口

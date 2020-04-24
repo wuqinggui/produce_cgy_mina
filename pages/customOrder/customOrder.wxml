@@ -35,16 +35,15 @@
         </view>
         <view class="flex-1 text-center f14">{{item.number}}{{item.measurementUnit.name}}</view>
         <view class="flex-1 text-center f14 verticle-center">
-          <input class="weui-input" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" />
+          <input class="weui-input" type="number" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" data-index="{{index}}" />
           <text class="ml5">{{item.measurementActualUnit.name}}</text>
         </view>
         <view class="flex-1 text-center f14 actual verticle-center">
-          <input class="weui-input" bindinput="bindKeyInput" />
+          <input class="weui-input" type="number" bindinput="bindKeyInput" value="{{item.totalMoney}}" data-key="totalMoney" data-index="{{index}}" />
           <text class="ml5">元</text>
         </view>
       </view>
     </view>
-
     <view class="info pl30 pr30">
       <view class="main-remarks remark f14 mb5">
         主备注:
@@ -61,11 +60,11 @@
       <view class="num flex ju-b pb10">
         <view class="num1 row flex-1 text-center f14">
           <text class="pr10">合计金额</text>
-          <text class="pl10"><text class="fw">0</text> 元</text>
+          <text class="pl10"><text class="fw">{{totalMoney}}</text> 元</text>
         </view>
         <view class="num2 flex-1 text-center f14">
           <text class="pr10">汇总数量</text>
-          <text class="pl10"><text class="fw">0</text> 斤</text>
+          <text class="pl10"><text class="fw">{{totalNum}}</text> 斤</text>
         </view>
       </view>
     </view>

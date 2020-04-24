@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalNum: 0,
+    totalMoney: 0,
     commodityName: '',
     orderCommoditEwVo: {
       mainDesc: '',
@@ -18,12 +20,13 @@ Page({
   // 获取详情数据
   getData: function() {
     let params = {
-      commdityId: this.data.id || '181142518'
+      commdityId: this.data.id || '173655322'
     };
     purchaseApi.getPurchaseDetail(params).then((res) => {
       if (res.data.length > 0) {
         res.data.forEach((item) => {
           item.count_price = 0;
+          item.totalMoney = 0;
         })
       }
       this.setData({
@@ -42,9 +45,31 @@ Page({
   },
   // 保存
   saveData: function() {
+    let product = this.data.product;
     let params = {};
+    let commodityDtos = {
+      id: '',
+      specKcList: []
+    };
+    if (product.length > 0) {
+      let arr = [];
+      commodityDtos.id = product[0].commodityId;
+      product.forEach((item) => {
+        commodityDtos.specKcList.push({
+          id: item.id,
+          kc: item.orderCommoditEwVo.kc,
+          price: item.price,
+          totalMoney: item.totalMoney
+        });
+      })
+    }
+    params.commodityDtos = commodityDtos;
     purchaseApi.updatePurchase(params).then((res) => {
-      console.log(res);
+      wx.showToast({
+        title: "保存成功",
+        icon: 'success'
+      })
+      wx.navigateBack();
     }).catch((error) => {
       console.log('保存详情数据失败', error);
       wx.showToast({
@@ -54,8 +79,38 @@ Page({
       })
     })
   },
+  isNumber: function isNumber(value) {
+    return typeof value === 'number' && isFinite(value);
+  },
+  totalNum: function() {
+    let product = this.data.product;
+    let sum = 0;
+    let num = 0;
+    product.forEach((item) => {
+      num += Number(item.accountNumber);
+      sum += Number(item.totalMoney);
+    })
+    this.setData({
+      totalMoney: sum,
+      totalNum: num
+    });
+  },
   bindKeyInput: function(e) {
-    console.log(e);
+    let key = e.currentTarget.dataset.key;
+    let index = e.currentTarget.dataset.index;
+    let product = this.data.product;
+    product[index][key] = e.detail.value;
+    let {
+      totalMoney,
+      accountNumber,
+      count_price
+    } = product[index];
+    count_price = totalMoney / accountNumber;
+    product[index]['count_price'] = this.isNumber(count_price) ? count_price.toFixed(2) : 0;
+    this.setData({
+      product: product
+    });
+    this.totalNum();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -77,14 +132,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // let sj_userId = wx.getStorageSync('sj_userId')
-    // if (sj_userId) {
+    let sj_userId = wx.getStorageSync('sj_userId')
+    if (sj_userId) {
     this.getData();
-    // } else {
-    //   wx.navigateTo({
-    //     url: '/pages/login/login'
-    //   })
-    // }
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
 
   /**

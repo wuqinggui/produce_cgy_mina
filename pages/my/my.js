@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
     list: [{
         text: '设置',
@@ -114,6 +115,7 @@ Page({
   // 页面初始化
   pageInit: function() {
     this.setData({
+      userInfo: getApp().globalData.userInfo,
       isAuthUserinfo: getApp().globalData.isAuthUserinfo
     })
   },

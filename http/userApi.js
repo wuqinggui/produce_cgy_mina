@@ -5,7 +5,7 @@ import {
 } from './url'
 
 var userApi = {
-  login: function(params) {
+  loginWx: function(params) {
     return new Promise((resolve, reject) => {
       wxRequest(loginURL, 'POST', params)
         .then((res) => {
