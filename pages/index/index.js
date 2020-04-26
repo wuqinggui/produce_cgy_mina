@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scrollTop: 0,
     isSupplier: false, //判断是否显示供应商
     name: '', // 模糊搜索
     // 当前地区
@@ -153,6 +154,7 @@ Page({
       .then((res) => {
         console.log('获取首页采购列表成功', res);
         this.setData({
+          scrollTop: 0,
           goodsList: res.data
         });
       })
