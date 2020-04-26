@@ -9,7 +9,9 @@ import {
   updatePurchaseUrl,
   purchaseDetailUrl,
   searchPriceUrl,
-  updatePriceUrl
+  updatePriceUrl,
+  findSwitchUrl,
+  updateSwitchUrl
 } from './url'
 
 var purchaseApi = {
@@ -97,6 +99,26 @@ var purchaseApi = {
   updatePrice: function (params) {
     return new Promise((resolve, reject) => {
       wxRequest(updatePriceUrl, 'POST', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  },
+  // 开关查询
+  findSwitch: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(findSwitchUrl, 'GET', params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => reject(error))
+    });
+  },
+  // 开关修改
+  updateSwitch: function (params) {
+    return new Promise((resolve, reject) => {
+      wxRequest(updateSwitchUrl, 'POST', params)
         .then((res) => {
           resolve(res);
         })

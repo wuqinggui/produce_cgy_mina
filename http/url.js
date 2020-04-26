@@ -20,3 +20,6 @@ export const updatePurchaseUrl = baseUrl + 'commodity/updateCk';
 export const searchPriceUrl = baseUrl + 'commodity/searchByCommodity';
 // 更改价格接口
 export const updatePriceUrl = baseUrl + 'commodity/update';
+// 采购开关 查询  修改
+export const findSwitchUrl = baseUrl + "switchCommodity/findAll";
+export const updateSwitchUrl = baseUrl + "switchCommodity/update";

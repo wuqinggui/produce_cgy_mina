@@ -196,6 +196,16 @@ Page({
     purchaseApi.searchPrice(params)
       .then((res) => {
         console.log('获取更新价格表成功', res);
+        let list = res.data.list;
+        if (list.length > 0) {
+          for(let i = 0; i < list.length; i++) {
+            if (list[i].specPriceVos.length > 0) {
+              for (let j = 0; j < list[i].specPriceVos.length; j ++) {
+                list[i].specPriceVos[j].price = list[i].specPriceVos[j].price.toFixed(2);
+              }
+            }
+          }
+        }
         this.setData({
           scrollTop: 0,
           goodsList: res.data.list.length ? res.data.list : []

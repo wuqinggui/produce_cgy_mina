@@ -1,5 +1,6 @@
 // pages/my/my.js
 var userApi = require('../../http/userApi.js').default;
+var purchaseApi = require('../../http/purchaseApi.js').default;
 Page({
 
   /**
@@ -7,11 +8,18 @@ Page({
    */
   data: {
     userInfo: {},
+    custom: 0,
+    switch_info: {},
     // isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
     list: [{
         text: '设置',
         url: '/pages/set/set',
         num: 0
+    }, {
+        text: '采购开关',
+        url: '',
+        num: 0,
+        radio: true
       },
       //  {
       //   text: '历史订单',
@@ -28,19 +36,44 @@ Page({
         url: '',
         // url: '/pages/aboutUS/aboutUS',
         num: 0
-      },
+      }
     ]
   },
-
+  radioChange: function (e) {
+    this.setData({
+      custom: e.detail.value
+    });
+    let { switch_info, custom } = this.data;
+    if(custom == 0) {
+      switch_info.custom = 1;
+      switch_info.scheduled = 0;
+    } else {
+      switch_info.custom = 0;
+      switch_info.scheduled = 1;
+    }
+    purchaseApi.updateSwitch(switch_info).then((res) => {
+      wx.showToast({
+        title: '修改成功',
+        icon: 'success'
+      })
+    }).catch((error) => {
+      wx.showToast({
+        title: error.message ? error.message : '修改失败，请重试',
+        icon: 'none',
+        duration: 2000
+      })
+    });
+  },
   navigateTo: function(e) {
     let {
-      url,
-      text
+      url, text, radio
     } = e.currentTarget.dataset;
     if (url) {
       wx.navigateTo({
         url: url,
       })
+    } else if(!url && radio) {
+      return
     } else {
       wx.showToast({
         title: '暂无设计' + text + '页面',
@@ -117,8 +150,20 @@ Page({
     this.setData({
       userInfo: getApp().globalData.userInfo
     })
+    this.getSwitch();
   },
-
+  getSwitch: function() {
+    purchaseApi.findSwitch().then((res) => {
+      this.setData({
+        switch_info: res.data.length ? res.data[0] : ''
+      });
+    }).catch((error) => {
+      wx.showToast({
+        title: error.message ? error.message : '获取开关失败',
+        icon: 'none'
+      });
+    })
+  },
   // 弹框式授权用户信息
   getUserInfo: function(e) {
     var _this = this;

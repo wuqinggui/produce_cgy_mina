@@ -37,7 +37,7 @@
             </view>
             <view class="type">
               <view class="mb5">规格/价格</view>
-              <view class="info flex mb5 gray9" wx:for="{{item.specPriceVos}}" wx:for-index="priceIndex" wx:for-item="priceItem">
+              <view class="info flex mb5 gray9" wx:for="{{item.specPriceVos}}" wx:for-index="priceIndex" wx:for-item="priceItem" wx:key="priceIndex">
                 <view class="type-class">{{priceItem.spec.specName}}</view>
                 <view class="type-price">
                   <input class="weui-input" bindinput="bindKeyInput"

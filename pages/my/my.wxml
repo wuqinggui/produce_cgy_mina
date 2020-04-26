@@ -1,21 +1,27 @@
 <template name="list">
-    <view class="list row verticle-center" hover-class="click-active" data-url="{{url}}" data-text="{{text}}" catchtap='navigateTo'>
-        <view class="list-text flex-1">{{text}}</view>
-        <view class="f16 ml10 mr10 gray6" wx:if="{{num > 0}}">{{num}}</view>
-        <mp-icon icon="arrow" class="arrow" color="black" size="{{10}}"></mp-icon>
-        <view class="half-px-border half-px-border-bottom"></view>
-    </view>
+  <view class="list row verticle-center" hover-class="click-active" data-url="{{url}}" data-text="{{text}}" data-radio="{{radio}}" catchtap='navigateTo'>
+    <view class="list-text flex-1">{{text}}</view>
+    <!-- <view class="f16 ml10 mr10 gray6" wx:if="{{num > 0}}">{{num}}</view> -->
+    <radio-group class="radio-group" bindchange="radioChange" wx:if="{{radio}}">
+      <radio class="radio mr10" color="#ffa800" value="0" checked="true">
+        <text>自定义</text>
+      </radio>
+      <radio class="radio" value="1" color="#ffa800">
+        <text>预定量</text>
+      </radio>
+    </radio-group>
+    <mp-icon icon="arrow" class="arrow" color="black" size="{{10}}" wx:else></mp-icon>
+    <view class="half-px-border half-px-border-bottom"></view>
+  </view>
 </template>
 
 <scroll-view scroll-y="trues" class="user">
-    <view class="info">
-        <button
-        class="auth-btn"
-        hover-class="none">
-        <!-- wx:if="{{!isAuthUserinfo}}" -->
-            <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/images/head_img.png'}}" class="info-icon"></image>
-            <text class="gray3 f16 text-white text-overflow pt10">{{userInfo.nickname ? userInfo.nickname : '用户名'}}</text>
-        </button>
-    </view>
-    <template wx:for="{{list}}" wx:key="index" is="list" data="{{...item}}"></template>
+  <view class="info">
+    <button class="auth-btn" hover-class="none">
+      <!-- wx:if="{{!isAuthUserinfo}}" -->
+      <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/images/head_img.png'}}" class="info-icon"></image>
+      <text class="gray3 f16 text-white text-overflow pt10">{{userInfo.nickname ? userInfo.nickname : '用户名'}}</text>
+    </button>
+  </view>
+  <template wx:for="{{list}}" wx:key="index" is="list" data="{{...item}}"></template>
 </scroll-view>

@@ -20,13 +20,13 @@ Page({
   // 获取详情数据
   getData: function() {
     let params = {
-      commdityId: this.data.id || '173655322'
+      commdityId: this.data.id
     };
     purchaseApi.getPurchaseDetail(params).then((res) => {
       if (res.data.length > 0) {
         res.data.forEach((item) => {
-          item.count_price = 0;
-          item.totalMoney = 0;
+          item.count_price = 0.00.toFixed(2);
+          item.totalMoney = 0.00.toFixed(2);
         })
       }
       this.setData({
@@ -91,7 +91,7 @@ Page({
       sum += Number(item.totalMoney);
     })
     this.setData({
-      totalMoney: sum,
+      totalMoney: sum.toFixed(2),
       totalNum: num
     });
   },
