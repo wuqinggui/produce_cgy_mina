@@ -15,7 +15,7 @@
     <text class="change" bindtap="changePrice">更新价格</text>
   </view>
   <!-- 中间菜品 -->
-  <scroll-view scroll-y class="content-wrap">
+  <scroll-view scroll-y class="content-wrap" scroll-top="{{scrollTop}}">
     <!-- 左侧菜单栏 -->
     <scroll-view scroll-y class="smallClass-list {{classList.length > 0 ? 'smallClass-list-have-nar' : ''}}">
       <block wx:for="{{smallClassList}}" wx:for-item="smallClassItem" wx:for-index="smallClassIndex" wx:key="smallClassIndex">
