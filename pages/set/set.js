@@ -27,16 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let { getOpenidEnd } = getApp().globalData;
-    // 已微信登陆
-    if (getOpenidEnd) {
-      this.pageInit();
-    } else {
-      // 未微信登陆
-      getApp().globalData.getOpenidCb = () => {
-        this.pageInit();
-      }
-    }
+    this.pageInit();
   },
 
   /**
@@ -78,7 +69,7 @@ Page({
   pageInit: function () {
     this.setData({
       isAuthUserinfo: getApp().globalData.isAuthUserinfo,
-      userinfo: getApp().globalData.userinfo
+      userinfo: getApp().globalData.userInfo
     })
   },
   // 跳转收货地址

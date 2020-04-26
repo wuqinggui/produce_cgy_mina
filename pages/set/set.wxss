@@ -9,3 +9,8 @@ page {
   border-radius: 66rpx;
   overflow: hidden;
 }
+.avatarUrl image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}

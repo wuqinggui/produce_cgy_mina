@@ -7,7 +7,7 @@ Page({
    */
   data: {
     userInfo: {},
-    isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
+    // isAuthUserinfo: false, // wxml无法直接使用getApp().globalData.isAuthUserinfo
     list: [{
         text: '设置',
         url: '/pages/set/set',
@@ -115,8 +115,7 @@ Page({
   // 页面初始化
   pageInit: function() {
     this.setData({
-      userInfo: getApp().globalData.userInfo,
-      isAuthUserinfo: getApp().globalData.isAuthUserinfo
+      userInfo: getApp().globalData.userInfo
     })
   },
 
