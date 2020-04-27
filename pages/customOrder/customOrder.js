@@ -57,7 +57,7 @@ Page({
       product.forEach((item) => {
         commodityDtos.specKcList.push({
           id: item.specId,
-          kc: item.orderCommoditEwVo.kc,
+          kc: item.accountNumber,
           price: item.price,
           totalMoney: item.totalMoney
         });
