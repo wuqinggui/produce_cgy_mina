@@ -56,7 +56,7 @@ Page({
       commodityDtos.id = product[0].commodityId;
       product.forEach((item) => {
         commodityDtos.specKcList.push({
-          id: item.id,
+          id: item.specId,
           kc: item.orderCommoditEwVo.kc,
           price: item.price,
           totalMoney: item.totalMoney
@@ -67,7 +67,8 @@ Page({
     purchaseApi.updatePurchase(params).then((res) => {
       wx.showToast({
         title: "保存成功",
-        icon: 'success'
+        icon: 'success',
+        duration: 2000
       })
       wx.navigateBack();
     }).catch((error) => {
