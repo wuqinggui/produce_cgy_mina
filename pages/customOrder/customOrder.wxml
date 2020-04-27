@@ -33,7 +33,7 @@
         <view class="flex-1 text-center f14 specifications">
           <text class="type">{{item.specs.specName}}</text>
         </view>
-        <view class="flex-1 text-center f14">{{item.number}}{{item.measurementUnit.name}}</view>
+        <view class="flex-1 text-center f14">{{item.orderCommoditEwVo.ydldesc}}</view>
         <view class="flex-1 text-center f14 verticle-center">
           <input class="weui-input" type="number" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" data-index="{{index}}" />
           <text class="ml5">{{item.measurementActualUnit.name}}</text>
