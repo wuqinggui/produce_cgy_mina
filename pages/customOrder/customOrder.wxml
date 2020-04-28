@@ -35,11 +35,11 @@
         </view>
         <view class="flex-1 text-center f14">{{item.orderCommoditEwVo.ydldesc}}</view>
         <view class="flex-1 text-center f14 verticle-center">
-          <input class="weui-input" type="number" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" data-index="{{index}}" />
+          <input class="weui-input" type="digit" bindinput="bindKeyInput" value="{{item.accountNumber}}" data-key="accountNumber" data-index="{{index}}" />
           <text class="ml5">{{item.measurementActualUnit.name}}</text>
         </view>
         <view class="flex-1 text-center f14 actual verticle-center">
-          <input class="weui-input" type="number" bindinput="bindKeyInput" value="{{item.totalMoney}}" data-key="totalMoney" data-index="{{index}}" />
+          <input class="weui-input" type="digit" bindinput="bindKeyInput" value="{{item.totalMoney}}" data-key="totalMoney" data-index="{{index}}" />
           <text class="ml5">元</text>
         </view>
       </view>
