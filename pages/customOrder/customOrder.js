@@ -24,7 +24,7 @@ Page({
     };
     purchaseApi.getPurchaseDetail(params).then((res) => {
       if (res.data.length > 0) {
-        let zero = 0.00;
+        let zero = 0;
         res.data.forEach((item) => {
           item.count_price = zero.toFixed(2);
           item.totalMoney = zero.toFixed(2);
