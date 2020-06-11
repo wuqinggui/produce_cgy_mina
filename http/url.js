@@ -1,4 +1,4 @@
-export const baseUrl = 'https://www.yuannong.shop:8019/trade/';
+export const baseUrl = 'https://www.yuannong.shop:8015/trade/';
 
 // 用户模块
 export const loginURL = baseUrl + 'nmUser/loginCgWx'; // 登陆
